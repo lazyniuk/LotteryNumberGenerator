@@ -32,9 +32,13 @@ jobs:
       run: |
         npm install
 
-    - name: Build APK
-      working-directory: android
-      run: ./gradlew assembleRelease
+    - name: Install Fastlane
+      run: |
+        sudo gem install fastlane
+
+    - name: Build APK using Fastlane
+      run: |
+        bundle exec fastlane android build_release_apk
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
