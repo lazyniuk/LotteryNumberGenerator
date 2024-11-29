@@ -32,11 +32,14 @@ jobs:
       run: |
         npm install
 
-    - name: Install Ruby and Bundler
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0
+        bundler-cache: true
+  
+    - name: Install Fastlane
       run: |
-        sudo apt-get install ruby-full -y
-        gem install bundler
-        bundle install
         gem install fastlane
 
     - name: Build APK using Fastlane
