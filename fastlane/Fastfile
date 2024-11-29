@@ -1,0 +1,13 @@
+default_platform(:android)
+
+platform :android do
+  desc "Build and release app"
+  lane :build_and_distribute do
+    gradle(task: "assembleRelease") # Build the release APK
+    # Optional: Distribute via Firebase App Distribution
+    # firebase_app_distribution(
+    #   app: "your-firebase-app-id",
+    #   apk_path: "app/build/outputs/apk/release/app-release.apk"
+    # )
+  end
+end
