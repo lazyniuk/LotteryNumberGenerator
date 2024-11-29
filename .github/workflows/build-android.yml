@@ -8,6 +8,7 @@ on:
 jobs:
   build-android:
     name: Build Android APK
+    environment: dev
     runs-on: ubuntu-latest
 
     steps:
@@ -32,13 +33,9 @@ jobs:
       run: |
         npm install
 
-    - name: Generate debug.keystore
+    - name: Decode debug.keystore
       run: |
-        keytool -genkey -v \
-          -keystore android/app/debug.keystore \
-          -keyalg RSA -keysize 2048 -validity 10000 \
-          -storepass android -keypass android \
-          -alias androiddebugkey
+        echo "${{ secrets.DEBUG_KEYSTORE }}" | base64 --decode > android/app/debug.keystore
       
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
