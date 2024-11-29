@@ -32,9 +32,12 @@ jobs:
       run: |
         npm install
 
-    - name: Install Fastlane
+    - name: Install Ruby and Bundler
       run: |
-        sudo gem install fastlane
+        sudo apt-get install ruby-full -y
+        gem install bundler
+        bundle install
+        gem install fastlane
 
     - name: Build APK using Fastlane
       run: |
