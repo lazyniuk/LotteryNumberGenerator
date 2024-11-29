@@ -1,0 +1,90 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Android specific files
+/android/.gradle/
+/android/.idea/
+/android/local.properties
+/android/app/build/
+/android/app/.cxx/
+/android/app/debug.keystore
+
+# iOS specific files
+/ios/Pods/
+/ios/build/
+/ios/*.xcodeproj/project.xcworkspace/
+/ios/*.xcworkspace/
+/ios/*.xcuserdata/
+/ios/*.xcuserstate
+*.xcuserdatad
+*.mode1v3
+*.mode2v3
+
+# Fastlane specific files
+/fastlane/report.xml
+/fastlane/Preview.html
+/fastlane/screenshots/
+/fastlane/test_output/
+/fastlane/metadata/android/*
+/fastlane/.env  # If you're using environment variables
+
+# Expo-specific files
+.expo/
+/.expo-shared/
+
+# Keystore files
+*.jks
+*.keystore
+
+# Generated APKs and AABs
+*.apk
+*.aab
+
+# Logs and debugging
+*.log
+debug.log
+*.tflite
+*.pbtxt
+*.pb
+
+# Metro Bundler cache
+*.cache/
+.expo-cache/
+
+# macOS system files
+.DS_Store
+
+# IDE/Editor-specific files
+.idea/
+*.iml
+.vscode/
+.vscode/settings.json
+*.swp
+
+# OS-specific files
+Thumbs.db
+desktop.ini
+
+# Jest/Testing
+coverage/
+.jest/
+
+# Environment files
+.env
+.env.*
+.env.local
+.env.production
+
+# Build cache
+build/
+
+# Ruby gems (if using Fastlane or bundler)
+.bundle/
+vendor/bundle/
+Gemfile.lock
+
+# TypeScript
+*.tsbuildinfo
