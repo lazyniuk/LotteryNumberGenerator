@@ -8,8 +8,8 @@ on:
 jobs:
   build-android:
     name: Build Android APK
-    environment: dev
     runs-on: ubuntu-latest
+    environment: dev
 
     steps:
     - name: Checkout code

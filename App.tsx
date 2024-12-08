@@ -5,7 +5,9 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  ToastAndroid, // For showing a message on Android
 } from 'react-native';
+import Clipboard from '@react-native-clipboard/clipboard'; // Clipboard API
 
 // Define types for the components
 type NumberArray = number[];
@@ -37,6 +39,13 @@ export default function App() {
   const generateMegaMillions = () => {
     setMegaMillionsNumbers(generateNumbers(70, 5));
     setMegaBall(Math.floor(Math.random() * 25) + 1);
+  };
+
+  // Copy numbers to clipboard
+  const copyToClipboard = (numbers: NumberArray, specialNumber: number | null, lotteryName: string) => {
+    const numberString = numbers.join(', ') + (specialNumber !== null ? ` | ${specialNumber}` : '');
+    Clipboard.setString(numberString);
+    ToastAndroid.show(`${lotteryName} numbers copied!`, ToastAndroid.SHORT); // Show a toast message
   };
 
   // Render the number balls
@@ -74,6 +83,11 @@ export default function App() {
         <TouchableOpacity style={styles.button} onPress={generatePowerball}>
           <Text style={styles.buttonText}>Generate Powerball Numbers</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.copyButton}
+          onPress={() => copyToClipboard(powerballNumbers, powerballRed, 'Powerball')}>
+          <Text style={styles.buttonText}>Copy Powerball Numbers</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Mega Millions Section */}
@@ -91,6 +105,11 @@ export default function App() {
         </View>
         <TouchableOpacity style={styles.button} onPress={generateMegaMillions}>
           <Text style={styles.buttonText}>Generate Mega Millions Numbers</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.copyButton}
+          onPress={() => copyToClipboard(megaMillionsNumbers, megaBall, 'Mega Millions')}>
+          <Text style={styles.buttonText}>Copy Mega Millions Numbers</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -148,6 +167,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderRadius: 25,
     elevation: 2,
+    marginTop: 10,
+  },
+  copyButton: {
+    backgroundColor: '#FF4500',
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 25,
+    elevation: 2,
+    marginTop: 10,
   },
   buttonText: {
     color: '#FFFFFF',
